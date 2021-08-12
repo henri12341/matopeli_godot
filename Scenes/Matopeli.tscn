@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Matopeli.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 343.858, 15.7867 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 28.4881, 346.713 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Seinat" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Seinat" groups=[
+"Seina",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Seinat/StaticBody2D" groups=[
+"Seina",
+]]
+position = Vector2( 295.571, -38.1838 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Seinat/StaticBody2D" groups=[
+"Seina",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Seinat/StaticBody2D/StaticBody2D" groups=[
+"Seina",
+]]
+position = Vector2( 299.813, 633.568 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Seinat" groups=[
+"Seina",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Seinat/StaticBody2D2" groups=[
+"Seina",
+]]
+position = Vector2( -46.6691, 304.056 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Seinat" groups=[
+"Seina",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Seinat/StaticBody2D3" groups=[
+"Seina",
+]]
+position = Vector2( 650.538, 309.713 )
+shape = SubResource( 2 )

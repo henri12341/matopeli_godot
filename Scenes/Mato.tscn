@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/mato-osa.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Mato.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 12.2288
+
+[node name="Mato-osa" type="RigidBody2D" groups=[
+"Mato",
+]]
+mode = 3
+gravity_scale = 0.0
+continuous_cd = 2
+contacts_reported = 3
+contact_monitor = true
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
+"Mato",
+]]
+shape = SubResource( 1 )
+
+[node name="mato-osa" type="Sprite" parent="." groups=[
+"Mato",
+]]
+texture = ExtResource( 1 )
