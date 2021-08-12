@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+# Added, because snake collides with itself when scene is laoded
+
 var kulunut_aika = 0
 var collisions_disabled = true
 
