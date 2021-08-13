@@ -63,9 +63,9 @@ func liiku(delta):
 		print(sijainti)
 		
 		if suunta == "Oikea":
-			liikutettava_madon_osa.position = Vector2(sijainti.x - ruudun_koko, sijainti.y)
-		if suunta == "Vasen":
 			liikutettava_madon_osa.position = Vector2(sijainti.x + ruudun_koko, sijainti.y)
+		if suunta == "Vasen":
+			liikutettava_madon_osa.position = Vector2(sijainti.x - ruudun_koko, sijainti.y)
 		if suunta == "Ylos":
 			liikutettava_madon_osa.position = Vector2(sijainti.x , sijainti.y - ruudun_koko)
 		if suunta == "Alas":
