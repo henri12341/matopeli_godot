@@ -3,7 +3,7 @@ extends Node2D
 var mato_osa = preload("res://Scenes/Mato.tscn")
 var syotti = preload("res://Scenes/syotti.tscn")
 var madon_osat = []
-var direction = "Oikea"
+var suunta = "Oikea"
 var ruudun_koko = 30
 var liikkumisnopeus = 0.2 # Yksikkö sekuntti
 var kulunut_aika = 0
@@ -27,21 +27,21 @@ func _ready():
 func _process(delta):
 	
 	if Input.is_action_pressed("move_down"):
-		if direction != "Ylos":
-			direction = "Alas"
+		if suunta != "Ylos":
+			suunta = "Alas"
 	if Input.is_action_pressed("move_left"):
-		if direction != "Oikea":
-			direction = "Vasen"
+		if suunta != "Oikea":
+			suunta = "Vasen"
 	if Input.is_action_pressed("move_right"):
-		if direction != "Vasen":
-			direction = "Oikea"
+		if suunta != "Vasen":
+			suunta = "Oikea"
 	if Input.is_action_pressed("move_up"):
-		if direction != "Alas":
-			direction = "Ylos"
+		if suunta != "Alas":
+			suunta = "Ylos"
 	
 	liiku(delta)
-	
-	pass
+	tormaysten_tarkistus()
+
 
 func liiku(delta):
 	kulunut_aika += delta
@@ -61,16 +61,19 @@ func liiku(delta):
 			sijainti = osa.position # Otetaan ensimmäisen madon osan sijainti
 			break
 		print(sijainti)
-		if direction == "Oikea":
+		
+		if suunta == "Oikea":
 			liikutettava_madon_osa.position = Vector2(sijainti.x - ruudun_koko, sijainti.y)
-		if direction == "Vasen":
+		if suunta == "Vasen":
 			liikutettava_madon_osa.position = Vector2(sijainti.x + ruudun_koko, sijainti.y)
-		if direction == "Ylos":
+		if suunta == "Ylos":
 			liikutettava_madon_osa.position = Vector2(sijainti.x , sijainti.y - ruudun_koko)
-		if direction == "Alas":
+		if suunta == "Alas":
 			liikutettava_madon_osa.position = Vector2(sijainti.x , sijainti.y + ruudun_koko)
 		madon_osat.push_front(liikutettava_madon_osa)
-	
+
+
+func tormaysten_tarkistus():
 	var bodies = madon_osat[0].get_colliding_bodies()
 	for body in bodies:
 		print(body)
@@ -91,4 +94,3 @@ func lisaa_syotti():
 	var random_y = rng.randi_range(0, 19) * ruudun_koko + 15
 	print(str(random_x) + ", " + str(random_y))
 	syotti_instance.position = Vector2(random_x , random_y)
-	
